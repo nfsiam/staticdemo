@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="side2.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul class="top">
+                <li id="prof">
+                    <button class="parentButton" onclick="showChild(this)" id="p1">Profile</button>
+                    <ul class="drp" id="drp1">
+                        <li><button class="childButton" onclick="openForm(this)">Log In</button></li>
+                        <li><input type="button" value="Log out" class="childButton"></li>
+                    </ul>
+                </li>
+                <li>
+                    <button class="parentButton" onclick="showChild(this)" id="p2">Settings</button>
+                    <div class="drp" id="drp2">
+                        <input type="button" value="Log In" class="childButton">
+                    </div>
+                </li>
+                <li>
+                    <button class="parentButton" onclick="showChild(this)" id="p3">Contact</button>
+                    <div class="drp" id="drp3">
+                        <input type="button" value="Log In" class="childButton">
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="editor">
+            <div class="bar">
+                <div class="title">
+                    NoteFused
+                </div>
+                <div class="btns">
+                    <a href="">
+                        <img src="ham.svg" alt="">
+                    </a>
+
+                </div>
+            </div>
+            <div class="notepad">
+                <textarea name="" id="pad" spellcheck="false" placeholder="Start typing notes here..."></textarea>
+            </div>
+
+        </div>
+    </div>
+    <div id="disableDiv">
+
+    </div>
+    <div class="loginform" id="loginForm">
+        <button id="close" onclick="closeForm()">x</button>
+        <form action="" id="logForm">
+            <h1>Login</h1>
+            <div class="input-sec">
+                <input type="text" name="" id="">
+                <span data-placeholder="username"></span>
+            </div>
+            <div class="input-sec">
+                <input type="password" name="" id="">
+                <span data-placeholder="password"></span>
+            </div>
+            <input type="submit" value="Login" class="logBtn">
+            <div class="regText">
+                Don't have an account? <a href="">Register Now</a>
+            </div>
+
+        </form>
+    </div>
+    <script>
+
+        function hideChild() {
+            document.getElementById("drp1").display = "none";
+
+        }
+        function openForm() {
+            document.getElementById("disableDiv").style.display = "block";
+            document.getElementById("loginForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("disableDiv").style.display = "none";
+            document.getElementById("loginForm").style.display = "none";
+        }
+        function showChild(ele) {
+            var id = ele.id;
+            if (id == "p1") {
+                document.getElementById("drp1").style.display = "block";
+                document.getElementById("drp1").focus();
+                document.getElementById("drp2").style.display = "none";
+                document.getElementById("drp3").style.display = "none";
+            }
+            if (id == "p2") {
+                document.getElementById("drp2").style.display = "block";
+                document.getElementById("drp2").focus();
+                document.getElementById("drp1").style.display = "none";
+                document.getElementById("drp3").style.display = "none";
+            }
+            if (id == "p3") {
+                document.getElementById("drp3").style.display = "block";
+                document.getElementById("drp3").focus();
+                document.getElementById("drp1").style.display = "none";
+                document.getElementById("drp2").style.display = "none";
+            }
+
+        }
+
+
+        $(".input-sec input").on("focus", function () {
+            $(this).addClass("focus");
+        });
+        $(".input-sec input").on("blur", function () {
+            if ($(this).val() == "") {
+                $(this).removeClass('focus');
+            }
+        });
+    </script>
+</body>
+
+</html>
