@@ -94,6 +94,10 @@
 
 
 }
+.childButton:focus, .parentButton:focus
+{
+    outline: none;
+}
 
 .top li input[type="button"]:focus
 {
